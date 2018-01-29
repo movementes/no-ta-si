@@ -6,6 +6,7 @@ const int trigPin = 3;
 const int echoPin = 4;
 long sensor = 0;
 int flag = 0;
+long duration, cm;
 
 long microsecondsToCentimeters(long microseconds) {
   return microseconds / 29 / 2;
@@ -18,8 +19,6 @@ void setup() {
  
 void loop() {
 
-  long duration, cm;
-  
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
