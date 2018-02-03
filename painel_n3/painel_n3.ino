@@ -1,33 +1,19 @@
+#include <Ultrasonic.h>
+
 #define NOTE_B3  247
 #define NOTE_D4  294
 #define NOTE_F4  349
 
-const int trigPin = 3;
-const int echoPin = 4;
 long sensor = 0;
 int flag = 0;
-long duration, cm;
+long cm;
 
-long microsecondsToCentimeters(long microseconds) {
-  return microseconds / 29 / 2;
-}
+Ultrasonic ultrasonic(3, 4);
 
-void setup() {
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-}
+void setup() {}
  
 void loop() {
-
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
-
-  duration = pulseIn(echoPin, HIGH);
-
-  cm = microsecondsToCentimeters(duration);
+  cm = ultrasonic.distanceRead();
 
   if (cm <= sensor) {
     sensor = cm;
