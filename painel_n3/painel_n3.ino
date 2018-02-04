@@ -1,5 +1,6 @@
 #include <Ultrasonic.h>
 
+#define TONE_PIN 8
 #define NOTE_B3  247
 #define NOTE_D4  294
 #define NOTE_F4  349
@@ -28,13 +29,13 @@ void loop() {
   }
 
   if (sensor > 20 && sensor <= 56) {
-    tone(8, NOTE_B3, 500);
+    tone(TONE_PIN, NOTE_B3, 500);
   } else if (sensor > 56 && sensor <= 92) {
-    tone(8, NOTE_D4, 500);
+    tone(TONE_PIN, NOTE_D4, 500);
   } else if (sensor > 92 && sensor <= 130) {
-    tone(8, NOTE_F4, 500);
+    tone(TONE_PIN, NOTE_F4, 500);
   } else {
-    noTone(8);
+    noTone(TONE_PIN);
   }
   
   delay(100);
